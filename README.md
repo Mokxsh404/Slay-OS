@@ -13,3 +13,5 @@ it was supposed to be a simple desktop UI for the Hack Club Stardance challenge.
 you can try it here → **https://mokxsh404.github.io/Slay-OS/**
 
 ---
+
+## what's inside

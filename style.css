@@ -88,3 +88,48 @@ body {
 
 .top-bar-left, .top-bar-right {
   display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.system-brand {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.15);
+}
+
+.system-menu {
+  display: flex;
+  gap: 8px;
+}
+
+.menu-trigger {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.menu-trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-pink);
+}
+
+.top-bar-center {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.system-indicators {
