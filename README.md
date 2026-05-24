@@ -15,3 +15,5 @@ you can try it here → **https://mokxsh404.github.io/Slay-OS/**
 ---
 
 ## what's inside
+
+**🖥️ the desktop**

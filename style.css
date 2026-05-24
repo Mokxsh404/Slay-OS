@@ -178,3 +178,49 @@ body {
   justify-content: center;
   width: 80px;
   height: 84px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.desktop-icon:hover {
+  background: rgba(236, 72, 153, 0.08);
+  border-color: rgba(236, 72, 153, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--neon-glow);
+}
+
+.icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.desktop-icon:hover .icon-wrapper {
+  transform: scale(1.08);
+}
+
+
+.welcome-icon {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+.notes-icon {
+  background: linear-gradient(135deg, #f59e0b, #ec4899);
+}
+.devlogs-icon {
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+}
+.terminal-icon {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+}
+
+.icon-label {
+  font-size: 0.75rem;
