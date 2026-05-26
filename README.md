@@ -18,3 +18,5 @@ you can try it here → **https://mokxsh404.github.io/Slay-OS/**
 
 **🖥️ the desktop**
 draggable windows, a top bar with a live clock, battery and wifi indicators. you can stack and move windows around like an actual OS. small details but they make it feel way more legit than it has any right to be.
+
+**🔐 login screen**

@@ -269,3 +269,48 @@ body {
 }
 
 .window-header {
+  padding: 10px 14px;
+  background: rgba(13, 10, 22, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  cursor: grab;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.window-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.window-dot:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dot-close { background-color: #ef4444; }
+.dot-min { background-color: #eab308; }
+.dot-max { background-color: #22c55e; }
+
+.window-title {
+  flex-grow: 1;
+  text-align: center;
