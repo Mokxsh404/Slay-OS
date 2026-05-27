@@ -20,3 +20,4 @@ you can try it here → **https://mokxsh404.github.io/Slay-OS/**
 draggable windows, a top bar with a live clock, battery and wifi indicators. you can stack and move windows around like an actual OS. small details but they make it feel way more legit than it has any right to be.
 
 **🔐 login screen**
+first time you open it, you name your PC and set a password. it saves to localStorage so it actually remembers you next time. your PC name even shows up in the terminal prompt which is a tiny thing but i love it.

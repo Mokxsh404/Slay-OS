@@ -314,3 +314,48 @@ body {
 .window-title {
   flex-grow: 1;
   text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+  margin-right: 32px; 
+}
+
+.window-spacer {
+  width: 0;
+}
+
+.window-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+
+#window-welcome {
+  width: 580px;
+  height: 420px;
+}
+
+.welcome-app {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.welcome-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-avatar {
+  font-size: 3rem;
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2));
+  border: 1px solid rgba(236, 72, 153, 0.3);
