@@ -41,3 +41,46 @@ function initLoginSystem() {
   if (savedData && savedData.pcName && savedData.password) {
     
     setupForm.style.display = 'none';
+    loginForm.style.display = 'flex';
+    subtitle.textContent = `Welcome back, ${savedData.pcName}`;
+
+    const loginPassword = document.getElementById('login-password');
+    const loginSubmit = document.getElementById('login-submit');
+    const loginError = document.getElementById('login-error');
+
+    function attemptLogin() {
+      const pw = loginPassword.value;
+      if (!pw) {
+        loginError.textContent = 'Enter your password.';
+        return;
+      }
+      if (pw !== savedData.password) {
+        loginError.textContent = 'Wrong password. Try again.';
+        loginPassword.value = '';
+        loginPassword.focus();
+        return;
+      }
+      
+      loginError.textContent = '';
+      unlockDesktop(savedData.pcName);
+    }
+
+    loginSubmit.addEventListener('click', attemptLogin);
+    loginPassword.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') attemptLogin();
+    });
+    loginPassword.focus();
+
+  } else {
+    
+    setupForm.style.display = 'flex';
+    loginForm.style.display = 'none';
+    subtitle.textContent = 'Set up your machine';
+
+    const setupPcName = document.getElementById('setup-pcname');
+    const setupPassword = document.getElementById('setup-password');
+    const setupSubmit = document.getElementById('setup-submit');
+    const setupError = document.getElementById('setup-error');
+
+    function attemptSetup() {
+      const name = setupPcName.value.trim();

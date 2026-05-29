@@ -404,3 +404,49 @@ body {
   border-radius: 8px;
   padding: 12px;
 }
+
+.grid-card h4 {
+  font-size: 0.85rem;
+  color: var(--accent-purple);
+  margin-bottom: 4px;
+}
+
+.grid-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.accent-btn, .nav-btn, .danger-btn {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accent-btn {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  color: #fff;
+}
+
+.accent-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--neon-glow);
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.08);
