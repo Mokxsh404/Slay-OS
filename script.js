@@ -84,3 +84,46 @@ function initLoginSystem() {
 
     function attemptSetup() {
       const name = setupPcName.value.trim();
+      const pw = setupPassword.value;
+      if (!name) {
+        setupError.textContent = 'Give your PC a name first.';
+        setupPcName.focus();
+        return;
+      }
+      if (!pw) {
+        setupError.textContent = 'Pick a password.';
+        setupPassword.focus();
+        return;
+      }
+      if (pw.length < 3) {
+        setupError.textContent = 'Password needs at least 3 characters.';
+        return;
+      }
+      
+      localStorage.setItem('slay_os_user', JSON.stringify({
+        pcName: name,
+        password: pw
+      }));
+      setupError.textContent = '';
+      unlockDesktop(name);
+    }
+
+    setupSubmit.addEventListener('click', attemptSetup);
+    setupPassword.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') attemptSetup();
+    });
+    setupPcName.focus();
+  }
+
+  function unlockDesktop(pcName) {
+    
+    loginScreen.classList.add('hidden');
+    setTimeout(() => {
+      loginScreen.style.display = 'none';
+    }, 600);
+
+    
+    const statusEl = document.querySelector('.system-status');
+    if (statusEl) {
+      statusEl.textContent = pcName;
+    }

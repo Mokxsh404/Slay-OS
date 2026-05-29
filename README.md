@@ -24,3 +24,5 @@ first time you open it, you name your PC and set a password. it saves to localSt
 
 **📝 slay notes**
 a notepad that auto-saves as you type. nothing crazy, just does its job without losing your stuff. you can delete notes too.
+
+**📂 devlogs**
