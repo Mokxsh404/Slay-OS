@@ -127,3 +127,46 @@ function initLoginSystem() {
     if (statusEl) {
       statusEl.textContent = pcName;
     }
+
+    
+    bootDesktop();
+  }
+}
+
+
+function initClock() {
+  const timeElement = document.getElementById('timeElement');
+  if (!timeElement) return;
+
+  function updateClock() {
+    const now = new Date();
+    
+    
+    const dateStr = now.toLocaleDateString(undefined, { 
+      year: 'numeric', 
+      month: '2-digit', 
+      day: '2-digit' 
+    });
+    const timeStr = now.toLocaleTimeString(undefined, { 
+      hour12: true, 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit' 
+    });
+    
+    timeElement.textContent = `${dateStr} ${timeStr}`;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+
+let highestZIndex = 100;
+
+function initWindowManager() {
+  const windows = document.querySelectorAll('.window');
+  const desktopIcons = document.querySelectorAll('.desktop-icon');
+  const menuTriggers = document.querySelectorAll('.menu-trigger');
+  
+  
