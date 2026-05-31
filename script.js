@@ -170,3 +170,46 @@ function initWindowManager() {
   const menuTriggers = document.querySelectorAll('.menu-trigger');
   
   
+  function focusWindow(win) {
+    
+    win.style.opacity = '1';
+    win.style.transform = 'scale(1)';
+    win.style.pointerEvents = 'auto';
+
+    win.classList.remove('inactive-window');
+    win.classList.add('active-window');
+    
+    highestZIndex++;
+    win.style.zIndex = highestZIndex;
+    
+    
+    windows.forEach(w => {
+      w.classList.remove('active-window-glow');
+      w.style.boxShadow = 'var(--glass-shadow)';
+    });
+    win.classList.add('active-window-glow');
+    win.style.boxShadow = 'var(--glass-shadow), var(--neon-glow)';
+  }
+
+  
+  windows.forEach(win => {
+    win.addEventListener('mousedown', () => focusWindow(win));
+    win.addEventListener('touchstart', () => focusWindow(win), { passive: true });
+    
+    
+    makeWindowDraggable(win);
+  });
+
+  
+  desktopIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const targetId = `window-${icon.getAttribute('data-window')}`;
+      const win = document.getElementById(targetId);
+      if (win) {
+        focusWindow(win);
+      }
+    });
+  });
+
+  
+  menuTriggers.forEach(btn => {

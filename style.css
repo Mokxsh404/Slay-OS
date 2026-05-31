@@ -540,3 +540,48 @@ body {
 
 .note-item:hover {
   background: rgba(255, 255, 255, 0.03);
+}
+
+.note-item.active-note {
+  background: rgba(236, 72, 153, 0.1);
+  border-left: 3px solid var(--accent-pink);
+}
+
+.note-item-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.note-item-preview {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notes-workspace {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  height: 100%;
+}
+
+.note-title-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.note-body-textarea {
+  background: transparent;

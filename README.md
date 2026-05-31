@@ -27,3 +27,5 @@ a notepad that auto-saves as you type. nothing crazy, just does its job without 
 
 **📂 devlogs**
 a viewer that shows the build journey of SlayOS itself. kinda meta honestly. sidebar navigation, clean layout, and reading about how the project came together from inside the project itself is weirdly cool.
+
+**🐚 slay terminal**
