@@ -213,3 +213,46 @@ function initWindowManager() {
 
   
   menuTriggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = `window-${btn.getAttribute('data-window')}`;
+      const win = document.getElementById(targetId);
+      if (win) {
+        focusWindow(win);
+      }
+    });
+  });
+
+  
+  const closeDots = document.querySelectorAll('.dot-close');
+  closeDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetName = dot.getAttribute('data-close');
+      const win = document.getElementById(`window-${targetName}`);
+      if (win) {
+        win.classList.remove('active-window', 'active-window-glow');
+        win.classList.add('inactive-window');
+        win.style.opacity = '0';
+        win.style.transform = 'scale(0.96)';
+        
+        setTimeout(() => {
+          win.style.pointerEvents = 'none';
+        }, 200);
+      }
+    });
+  });
+
+  
+  const minDots = document.querySelectorAll('.dot-min');
+  minDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetName = dot.getAttribute('data-min');
+      const win = document.getElementById(`window-${targetName}`);
+      if (win) {
+        win.style.opacity = '0.1';
+        win.style.transform = 'translateY(100px) scale(0.8)';
+        win.style.pointerEvents = 'none';
+        
+        
+        const restoreBtn = document.querySelector(`.menu-trigger[data-window="${targetName}"]`);

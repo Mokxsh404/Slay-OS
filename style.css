@@ -585,3 +585,48 @@ body {
 
 .note-body-textarea {
   background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  resize: none;
+  flex-grow: 1;
+  outline: none;
+  line-height: 1.5;
+}
+
+.notes-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#save-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+
+
+#window-devlogs {
+  width: 620px;
+  height: 430px;
+}
+
+.devlogs-app {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+}
+
+.devlogs-sidebar {
+  background: rgba(10, 8, 18, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  height: 100%;
+}
+
+.devlogs-menu-list {
+  list-style: none;
