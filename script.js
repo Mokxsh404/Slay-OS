@@ -256,3 +256,46 @@ function initWindowManager() {
         
         
         const restoreBtn = document.querySelector(`.menu-trigger[data-window="${targetName}"]`);
+        if (restoreBtn) {
+          const restoreHandler = () => {
+            win.style.opacity = '1';
+            win.style.transform = 'none';
+            win.style.pointerEvents = 'auto';
+            focusWindow(win);
+            restoreBtn.removeEventListener('click', restoreHandler);
+          };
+          restoreBtn.addEventListener('click', restoreHandler);
+        }
+      }
+    });
+  });
+
+  
+  const maxDots = document.querySelectorAll('.dot-max');
+  maxDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetName = dot.getAttribute('data-max');
+      const win = document.getElementById(`window-${targetName}`);
+      if (win) {
+        if (win.classList.contains('maximized')) {
+          win.classList.remove('maximized');
+          win.style.width = win.dataset.prevWidth || '500px';
+          win.style.height = win.dataset.prevHeight || '400px';
+          win.style.top = win.dataset.prevTop || '20%';
+          win.style.left = win.dataset.prevLeft || '20%';
+        } else {
+          
+          win.dataset.prevWidth = win.style.width;
+          win.dataset.prevHeight = win.style.height;
+          win.dataset.prevTop = win.style.top;
+          win.dataset.prevLeft = win.style.left;
+          
+          win.classList.add('maximized');
+          win.style.width = '100%';
+          win.style.height = 'calc(100% - 44px)';
+          win.style.top = '44px';
+          win.style.left = '0px';
+        }
+      }
+    });

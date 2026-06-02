@@ -30,3 +30,5 @@ a viewer that shows the build journey of SlayOS itself. kinda meta honestly. sid
 
 **🐚 slay terminal**
 a working terminal with real commands — `help`, `ls`, `whoami`, `clear`, `date` and more. the prompt uses your PC name so it feels personal. type `help` and go explore.
+
+**🎰 slay roulette**
