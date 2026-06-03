@@ -721,3 +721,48 @@ body {
   border-left: 3px solid var(--accent-purple);
   padding-left: 12px;
   margin: 14px 0;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.devlog-content code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+
+
+#window-terminal {
+  width: 640px;
+  height: 400px;
+}
+
+.terminal-app {
+  background-color: rgba(6, 4, 10, 0.95);
+  font-family: var(--font-mono);
+  color: #38bdf8;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.terminal-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.terminal-welcome {
+  color: #a78bfa;
+}
+
+.terminal-ascii {
+  line-height: 1.1;
+  font-weight: 700;

@@ -342,3 +342,46 @@ function makeWindowDraggable(win) {
     document.ontouchend = closeDragElement;
     document.ontouchmove = elementTouchDrag;
   }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    
+    updatePosition(win.offsetTop - pos2, win.offsetLeft - pos1);
+  }
+
+  function elementTouchDrag(e) {
+    const touch = e.touches[0];
+    pos1 = pos3 - touch.clientX;
+    pos2 = pos4 - touch.clientY;
+    pos3 = touch.clientX;
+    pos4 = touch.clientY;
+    
+    updatePosition(win.offsetTop - pos2, win.offsetLeft - pos1);
+  }
+
+  function updatePosition(top, left) {
+    
+    const desktopHeight = window.innerHeight;
+    const desktopWidth = window.innerWidth;
+    
+    if (top < 44) top = 44; 
+    if (top > desktopHeight - 50) top = desktopHeight - 50; 
+    if (left < -win.offsetWidth + 100) left = -win.offsetWidth + 100; 
+    if (left > desktopWidth - 100) left = desktopWidth - 100; 
+
+    win.style.top = top + "px";
+    win.style.left = left + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+    document.ontouchend = null;
+    document.ontouchmove = null;
+  }
+}
