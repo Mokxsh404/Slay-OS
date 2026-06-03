@@ -32,3 +32,4 @@ a viewer that shows the build journey of SlayOS itself. kinda meta honestly. sid
 a working terminal with real commands — `help`, `ls`, `whoami`, `clear`, `date` and more. the prompt uses your PC name so it feels personal. type `help` and go explore.
 
 **🎰 slay roulette**
+this is the chaotic one. you flip a coin. heads → nothing happens, you feel relieved. tails → half your desktop icons get deleted. there's a restore button so it's not permanent but honestly those few seconds after losing are genuinely stressful lmao. it also tracks your wins and losses which is just mean.

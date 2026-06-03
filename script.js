@@ -299,3 +299,46 @@ function initWindowManager() {
         }
       }
     });
+  });
+
+  
+  const welcomeTermBtn = document.querySelector('.open-terminal-btn');
+  if (welcomeTermBtn) {
+    welcomeTermBtn.addEventListener('click', () => {
+      const termWin = document.getElementById('window-terminal');
+      if (termWin) focusWindow(termWin);
+    });
+  }
+}
+
+
+function makeWindowDraggable(win) {
+  const header = document.getElementById(`${win.id}-header`);
+  if (!header) return;
+
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+  header.onmousedown = dragMouseDown;
+  header.ontouchstart = dragTouchStart;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    
+    if (e.target.classList.contains('window-dot')) return;
+    
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function dragTouchStart(e) {
+    if (e.target.classList.contains('window-dot')) return;
+    
+    const touch = e.touches[0];
+    pos3 = touch.clientX;
+    pos4 = touch.clientY;
+    document.ontouchend = closeDragElement;
+    document.ontouchmove = elementTouchDrag;
+  }

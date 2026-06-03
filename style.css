@@ -676,3 +676,48 @@ body {
 .log-date {
   font-size: 0.65rem;
   color: var(--text-muted);
+}
+
+.devlogs-viewer {
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.devlog-content h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.devlog-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.devlog-content p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.devlog-content ul {
+  padding-left: 18px;
+  margin-bottom: 12px;
+}
+
+.devlog-content li {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.devlog-content blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: 12px;
+  margin: 14px 0;
