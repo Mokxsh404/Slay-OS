@@ -385,3 +385,47 @@ function makeWindowDraggable(win) {
     document.ontouchmove = null;
   }
 }
+
+
+function initNotesApp() {
+  const notesList = document.getElementById('notes-list');
+  const addBtn = document.getElementById('add-note-btn');
+  const deleteBtn = document.getElementById('delete-note-btn');
+  const noteTitle = document.getElementById('note-title');
+  const noteBody = document.getElementById('note-body');
+  const saveStatus = document.getElementById('save-status');
+
+  if (!notesList) return;
+
+  let notes = JSON.parse(localStorage.getItem('slay_notes')) || [
+    {
+      id: 'note-1',
+      title: 'Welcome',
+      body: 'Hey, this is Slay Notes. Anything you type here gets auto-saved to your browser so it\'ll be here when you come back.\n\nFeel free to delete this and write your own stuff.',
+      timestamp: Date.now()
+    },
+    {
+      id: 'note-2',
+      title: 'How this OS works',
+      body: 'Slay OS is built with plain HTML, CSS, and JS.\n\nStuff it can do:\n- Drag windows around\n- Save notes automatically\n- Run terminal commands\n- Login with a password',
+      timestamp: Date.now() - 3600000
+    }
+  ];
+
+  let activeNoteId = notes.length > 0 ? notes[0].id : null;
+  let saveTimeout = null;
+
+  function saveToLocalStorage() {
+    localStorage.setItem('slay_notes', JSON.stringify(notes));
+    saveStatus.textContent = 'Saved';
+    saveStatus.style.color = 'var(--text-muted)';
+  }
+
+  function triggerAutoSave() {
+    saveStatus.textContent = 'Saving...';
+    saveStatus.style.color = 'var(--accent-pink)';
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      const activeNote = notes.find(n => n.id === activeNoteId);
+      if (activeNote) {
+        activeNote.title = noteTitle.value || 'Untitled Note';

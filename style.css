@@ -766,3 +766,48 @@ body {
 .terminal-ascii {
   line-height: 1.1;
   font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.term-highlight {
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
+.terminal-prompt {
+  color: #ec4899;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  flex-grow: 1;
+  outline: none;
+}
+
+.terminal-output-line {
+  line-height: 1.4;
+  font-size: 0.85rem;
+}
+
+.terminal-output-line.cmd-echo {
+  color: #f472b6;
+  font-weight: 500;
+}
+
+.terminal-output-line.system-msg {
+  color: #cbd5e1;
+}
+
+.terminal-output-line.error-msg {
