@@ -429,3 +429,46 @@ function initNotesApp() {
       const activeNote = notes.find(n => n.id === activeNoteId);
       if (activeNote) {
         activeNote.title = noteTitle.value || 'Untitled Note';
+        activeNote.body = noteBody.value;
+        activeNote.timestamp = Date.now();
+        renderNotesList();
+        saveToLocalStorage();
+      }
+    }, 400); 
+  }
+
+  function renderNotesList() {
+    notesList.innerHTML = '';
+    
+    
+    const sortedNotes = [...notes].sort((a, b) => b.timestamp - a.timestamp);
+    
+    sortedNotes.forEach(note => {
+      const li = document.createElement('li');
+      li.className = `note-item ${note.id === activeNoteId ? 'active-note' : ''}`;
+      
+      const snippet = note.body ? note.body.substring(0, 35) + (note.body.length > 35 ? '...' : '') : 'Empty note';
+      
+      li.innerHTML = `
+        <div class="note-item-title">${escapeHTML(note.title)}</div>
+        <div class="note-item-preview">${escapeHTML(snippet)}</div>
+      `;
+      
+      li.addEventListener('click', () => {
+        activeNoteId = note.id;
+        loadActiveNote();
+        renderNotesList();
+      });
+      
+      notesList.appendChild(li);
+    });
+  }
+
+  function loadActiveNote() {
+    const activeNote = notes.find(n => n.id === activeNoteId);
+    if (activeNote) {
+      noteTitle.value = activeNote.title;
+      noteBody.value = activeNote.body;
+      noteTitle.disabled = false;
+      noteBody.disabled = false;
+    } else {
