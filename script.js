@@ -472,3 +472,46 @@ function initNotesApp() {
       noteTitle.disabled = false;
       noteBody.disabled = false;
     } else {
+      noteTitle.value = '';
+      noteBody.value = '';
+      noteTitle.disabled = true;
+      noteBody.disabled = true;
+    }
+  }
+
+  
+  addBtn.addEventListener('click', () => {
+    const newNote = {
+      id: 'note-' + Date.now(),
+      title: 'Untitled Note',
+      body: '',
+      timestamp: Date.now()
+    };
+    notes.push(newNote);
+    activeNoteId = newNote.id;
+    loadActiveNote();
+    renderNotesList();
+    saveToLocalStorage();
+    noteTitle.focus();
+  });
+
+  deleteBtn.addEventListener('click', () => {
+    if (!activeNoteId) return;
+    notes = notes.filter(n => n.id !== activeNoteId);
+    activeNoteId = notes.length > 0 ? notes[0].id : null;
+    loadActiveNote();
+    renderNotesList();
+    saveToLocalStorage();
+  });
+
+  noteTitle.addEventListener('input', triggerAutoSave);
+  noteBody.addEventListener('input', triggerAutoSave);
+
+  
+  loadActiveNote();
+  renderNotesList();
+}
+
+
+function initDevlogsApp() {
+  const devlogDisplay = document.getElementById('devlog-display');
