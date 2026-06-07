@@ -38,3 +38,5 @@ this is the chaotic one. you flip a coin. heads → nothing happens, you feel re
 takes your webcam feed and turns it into live ASCII art in real time. you can switch between modes — Matrix green, Neon Pink, Cyber Cyan, Classic white, full RGB color. adjust the detail level. take snapshots. it shows FPS and character count live at the bottom. this one was absolutely unnecessary and also my favorite thing i've ever built.
 
 ---
+
+## tech stack

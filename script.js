@@ -515,3 +515,46 @@ function initNotesApp() {
 
 function initDevlogsApp() {
   const devlogDisplay = document.getElementById('devlog-display');
+  const menuItems = document.querySelectorAll('.devlog-menu-item');
+
+  if (!devlogDisplay) return;
+
+  const devlogsData = {
+    "1": {
+      title: "System Inception & Grid Layouts",
+      date: "June 10, 2026",
+      content: `
+        <h2>Day 1: System Inception</h2>
+        <span class="devlog-meta">Authored by @Mokxsh_ on June 10, 2026</span>
+        <p>decided to build a web-based OS mockup for the Hack Club Stardance challenge. named it Slay OS lol. spent the day writing basic HTML and setting up custom CSS variables.</p>
+        <p>wanted a dark cyber-chic theme, so i went with glassmorphic panels, neon glows, and lots of pinks and purples. got the icon grids and system bar done. looks pretty clean so far.</p>
+        <blockquote>"vanilla CSS gives me the raw control to design a frosted glass layout that is fully customized without any tailwind bloat."</blockquote>
+        <p>quick summary of what got done:</p>
+        <ul>
+          <li>setup index.html outline and structured pages as absolute elements</li>
+          <li>made the top-bar layout with battery status and clocks</li>
+          <li>drew up SVGs for each app icon</li>
+          <li>mapped out the desktop grid for drag-and-drop placements later</li>
+        </ul>
+      `
+    },
+    "2": {
+      title: "Multi-Window Mechanics & Touch Support",
+      date: "June 11, 2026",
+      content: `
+        <h2>Day 2: drag & focus handlers</h2>
+        <span class="devlog-meta">Authored by @Mokxsh_ on June 11, 2026</span>
+        <p>making windows draggable with plain JS is a nightmare. spent the whole day coding mouse and touch handlers to move windows around by their headers.</p>
+        <p>also had to handle bounds checking so you can't throw windows off-screen, and a dynamic z-index system so clicking a window brings it to focus on top of everything else.</p>
+        <p>key highlights:</p>
+        <ul>
+          <li>wrote vanilla drag handlers for both mouse clicks and touch controls</li>
+          <li>added boundary limits so headers don't get stuck under the top-bar or off-screen</li>
+          <li>added classic window dots: close (fade out), minimize (scale down), and maximize (fill screen)</li>
+        </ul>
+      `
+    },
+    "3": {
+      title: "Auto-save Notepad & Command Shell CLI",
+      date: "June 12, 2026",
+      content: `
