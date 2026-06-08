@@ -558,3 +558,46 @@ function initDevlogsApp() {
       title: "Auto-save Notepad & Command Shell CLI",
       date: "June 12, 2026",
       content: `
+        <h2>Day 3: notepad & custom cli terminal</h2>
+        <span class="devlog-meta">Authored by @Mokxsh_ on June 12, 2026</span>
+        <p>added real functionality today. notepad saves your text automatically to localStorage using a debounce timeout so it doesn't lag while typing.</p>
+        <p>then built a custom terminal parser. it's not a real terminal, but it supports custom commands like help, date, clear, neofetch, and a matrix code rain command using intervals. pretty fun stuff.</p>
+        <blockquote>"adding the terminal neofetch and matrix rain makes this desktop simulation actually feel like a real hacky setup."</blockquote>
+      `
+    },
+    "4": {
+      title: "ASCII Cam App Integration",
+      date: "June 13, 2026",
+      content: `
+        <h2>Day 4: Live ASCII Camera</h2>
+        <span class="devlog-meta">Authored by @Mokxsh_ on June 13, 2026</span>
+        <p>decided a normal webcam viewer was too boring. spent today coding an ASCII camera that draws live video to an offscreen canvas, checks each pixel's brightness, and replaces it with characters like @, #, %, and spaces.</p>
+        <p>also added neon colors (pink, cyan, green) and real RGB color mode where characters are rendered in their exact color. you can even save a snapshot to a png. definitely my favorite feature so far.</p>
+        <p>highlights:</p>
+        <ul>
+          <li>used getUserMedia for live video streams with horizontal mirroring (selfie-mode)</li>
+          <li>mapped brightness to a 70-character dense-to-sparse text ramp</li>
+          <li>added color filters and true-color rendering via HTML spans</li>
+          <li>implemented custom Canvas drawing to export snapshots as PNG images</li>
+        </ul>
+      `
+    }
+  };
+
+  function displayDevlog(id) {
+    const log = devlogsData[id];
+    if (log) {
+      devlogDisplay.innerHTML = log.content;
+    }
+  }
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      menuItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      displayDevlog(item.getAttribute('data-log'));
+    });
+  });
+
+  
+  displayDevlog("1");
