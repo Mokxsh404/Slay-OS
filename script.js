@@ -601,3 +601,46 @@ function initDevlogsApp() {
 
   
   displayDevlog("1");
+}
+
+
+function initTerminalApp() {
+  const termInput = document.getElementById('terminal-input');
+  const termLog = document.getElementById('terminal-log');
+  const termWin = document.getElementById('window-terminal');
+
+  if (!termInput || !termLog) return;
+
+  const savedData = JSON.parse(localStorage.getItem('slay_os_user'));
+  const pcName = savedData ? savedData.pcName : 'User';
+  const cleanName = pcName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+  const userPrompt = `${cleanName}@slayos:~$`;
+
+  
+  const terminalContent = termWin.querySelector('.terminal-app');
+  if (terminalContent) {
+    terminalContent.addEventListener('click', () => {
+      termInput.focus();
+    });
+  }
+
+  termInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const commandLine = termInput.value.trim();
+      termInput.value = '';
+      
+      if (commandLine) {
+        handleTerminalCommand(commandLine);
+      }
+    }
+  });
+
+  function printLine(text, className = '') {
+    const line = document.createElement('div');
+    line.className = `terminal-output-line ${className}`;
+    line.innerHTML = text;
+    termLog.appendChild(line);
+    
+    
+    const body = document.getElementById('terminal-body-content');
+    if (body) {
