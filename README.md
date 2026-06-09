@@ -42,3 +42,5 @@ takes your webcam feed and turns it into live ASCII art in real time. you can sw
 ## tech stack
 
 HTML, CSS, vanilla JS. that's it lol. no react, no build tools, no dependencies. just three files.
+
+---

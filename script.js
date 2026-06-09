@@ -644,3 +644,46 @@ function initTerminalApp() {
     
     const body = document.getElementById('terminal-body-content');
     if (body) {
+      body.scrollTop = body.scrollHeight;
+    }
+  }
+
+  function handleTerminalCommand(cmdText) {
+    
+    printLine(`${userPrompt} ${escapeHTML(cmdText)}`, 'cmd-echo');
+    
+    const tokens = cmdText.split(/\s+/);
+    const cmd = tokens[0].toLowerCase();
+    const args = tokens.slice(1);
+
+    switch (cmd) {
+      case 'help':
+        printLine('Available Commands:', 'system-msg');
+        printLine('  <span class="term-highlight">help</span>     - show this menu');
+        printLine('  <span class="term-highlight">neofetch</span> - show system specs');
+        printLine('  <span class="term-highlight">slay</span>     - check the system vibes');
+        printLine('  <span class="term-highlight">matrix</span>   - cool falling green rain effect');
+        printLine('  <span class="term-highlight">asciicam</span> - launch the ascii art camera');
+        printLine('  <span class="term-highlight">date</span>     - print current time');
+        printLine('  <span class="term-highlight">clear</span>    - clear terminal screen');
+        break;
+
+      case 'asciicam':
+        printLine('Opening ASCII Cam...', 'system-msg');
+        const camIcon = document.getElementById('icon-asciicam');
+        if (camIcon) camIcon.click();
+        break;
+        
+      case 'clear':
+        termLog.innerHTML = '';
+        break;
+        
+      case 'date':
+        printLine(`System Date: ${new Date().toString()}`, 'system-msg');
+        break;
+        
+      case 'slay':
+        printLine('✦ SYSTEM VIBE CHECK ✦', 'term-highlight');
+        printLine('Code quality.......... solid');
+        printLine('Interface design...... looking clean');
+        printLine('Overall status: yeah we\'re good here.', 'system-msg');
