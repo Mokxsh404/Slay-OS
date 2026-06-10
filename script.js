@@ -687,3 +687,47 @@ function initTerminalApp() {
         printLine('Code quality.......... solid');
         printLine('Interface design...... looking clean');
         printLine('Overall status: yeah we\'re good here.', 'system-msg');
+        break;
+        
+      case 'neofetch':
+        runNeofetch();
+        break;
+        
+      case 'matrix':
+        runMatrixEffect();
+        break;
+        
+      default:
+        printLine(`Command not found: "${escapeHTML(cmd)}". Type <span class="term-highlight">help</span> to view lists.`, 'error-msg');
+    }
+  }
+
+  function runNeofetch() {
+    const neofetchHTML = `
+      <div class="neofetch-container">
+        <div class="neofetch-logo">
+    .--.
+   |o_o |
+   |:_/ |  SlayOS
+  //   \\ \\ 2026
+ (|     | )
+/'\\_   _/\\'
+\\___)=(___/
+        </div>
+        <div class="neofetch-info">
+          <div class="neofetch-title">${cleanName}@slay_os_desktop</div>
+          <div style="color: var(--text-muted)">------------------------</div>
+          <div class="neofetch-item"><span class="neofetch-label">OS</span>: Slay OS (Hack Club Stardance)</div>
+          <div class="neofetch-item"><span class="neofetch-label">Host</span>: Web Interface Mockup</div>
+          <div class="neofetch-item"><span class="neofetch-label">Uptime</span>: ${Math.round(performance.now() / 1000)}s</div>
+          <div class="neofetch-item"><span class="neofetch-label">Shell</span>: Javascript Custom Parser v1.0</div>
+          <div class="neofetch-item"><span class="neofetch-label">Resolution</span>: ${window.innerWidth}x${window.innerHeight}</div>
+          <div class="neofetch-item"><span class="neofetch-label">UI Theme</span>: Neon Purple Glassmorphic</div>
+          <div class="neofetch-item"><span class="neofetch-label">Font</span>: Outfit, Fira Code</div>
+          <div class="neofetch-item"><span class="neofetch-label">CPU</span>: Virtual Slay Engine v9</div>
+          <div class="neofetch-item"><span class="neofetch-label">Memory</span>: Infinite RAM (Browser sandbox)</div>
+        </div>
+      </div>
+    `;
+    printLine(neofetchHTML);
+  }
