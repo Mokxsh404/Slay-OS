@@ -1127,3 +1127,49 @@ body {
   border-color: var(--accent-pink);
   box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
 }
+
+.login-btn {
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.login-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-error {
+  font-size: 0.8rem;
+  color: #f87171;
+  min-height: 1.2em;
+  margin-top: 4px;
+}
+
+
+#pc-name-display {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.85rem;
+}
+
+
+
+.asciicam-icon {
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+}
+
+#window-asciicam {

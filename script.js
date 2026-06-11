@@ -731,3 +731,45 @@ function initTerminalApp() {
     `;
     printLine(neofetchHTML);
   }
+
+  function runMatrixEffect() {
+    printLine('Entering matrix code stream... Press Ctrl+C or type clear to exit.', 'term-highlight');
+    let count = 0;
+    
+    
+    const interval = setInterval(() => {
+      if (count > 25) {
+        clearInterval(interval);
+        printLine('Matrix diagnostic sequence finished.', 'system-msg');
+        return;
+      }
+      
+      
+      let binaryStr = '';
+      const chars = '01SLAYOS10✦⚡>>_';
+      for (let i = 0; i < 40; i++) {
+        binaryStr += chars[Math.floor(Math.random() * chars.length)] + ' ';
+      }
+      printLine(binaryStr, 'matrix-line');
+      count++;
+    }, 120);
+  }
+}
+
+
+function initRouletteApp() {
+  const coin = document.getElementById('roulette-coin');
+  const flipBtn = document.getElementById('roulette-flip-btn');
+  const resultDiv = document.getElementById('roulette-result');
+  const restoreBtn = document.getElementById('roulette-restore-btn');
+  const winsEl = document.getElementById('roulette-wins');
+  const lossesEl = document.getElementById('roulette-losses');
+
+  if (!flipBtn) return;
+
+  
+  let wins = parseInt(localStorage.getItem('roulette_wins') || '0', 10);
+  let losses = parseInt(localStorage.getItem('roulette_losses') || '0', 10);
+
+  winsEl.textContent = wins;
+  lossesEl.textContent = losses;
