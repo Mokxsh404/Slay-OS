@@ -773,3 +773,47 @@ function initRouletteApp() {
 
   winsEl.textContent = wins;
   lossesEl.textContent = losses;
+
+  
+  const wipedIcons = document.querySelectorAll('.desktop-icon.wiped');
+  if (wipedIcons.length > 0) {
+    restoreBtn.style.display = 'inline-block';
+  }
+
+  flipBtn.addEventListener('click', () => {
+    
+    flipBtn.disabled = true;
+    restoreBtn.style.display = 'none';
+    resultDiv.textContent = 'Flipping...';
+    resultDiv.className = 'roulette-result';
+
+    
+    coin.textContent = '✦';
+    coin.className = 'roulette-coin spinning';
+
+    
+    setTimeout(() => {
+      coin.classList.remove('spinning');
+      const isWin = Math.random() < 0.5;
+
+      if (isWin) {
+        wins++;
+        localStorage.setItem('roulette_wins', wins);
+        winsEl.textContent = wins;
+
+        coin.className = 'roulette-coin win';
+        coin.textContent = '🏆';
+        resultDiv.textContent = 'Heads! You Won! Safe for now.';
+        resultDiv.classList.add('win-text');
+
+        
+        const wipedIconsCount = document.querySelectorAll('.desktop-icon.wiped').length;
+        if (wipedIconsCount > 0) {
+          restoreBtn.style.display = 'inline-block';
+        }
+      } else {
+        losses++;
+        localStorage.setItem('roulette_losses', losses);
+        lossesEl.textContent = losses;
+
+        coin.className = 'roulette-coin lose';
