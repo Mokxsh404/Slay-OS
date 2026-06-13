@@ -48,3 +48,5 @@ HTML, CSS, vanilla JS. that's it lol. no react, no build tools, no dependencies.
 ## ai usage
 
 used AI here and there for some parts of the UI — mostly for inspiration and bouncing ideas around when i was stuck on design decisions. the actual development, all the features, the logic, the backend stuff — that was all me. AI was more of a brainstorming tool than anything else. the OS itself i built and coded from scratch.
+
+---

@@ -817,3 +817,46 @@ function initRouletteApp() {
         lossesEl.textContent = losses;
 
         coin.className = 'roulette-coin lose';
+        coin.textContent = '💥';
+        resultDiv.textContent = 'Tails! Half of your apps were wiped!';
+        resultDiv.classList.add('lose-text');
+
+        
+        const activeIcons = Array.from(document.querySelectorAll('.desktop-icon:not(.wiped)'));
+        if (activeIcons.length > 0) {
+          
+          const shuffled = activeIcons.sort(() => 0.5 - Math.random());
+          
+          const numToWipe = Math.max(1, Math.floor(shuffled.length / 2));
+          const toWipe = shuffled.slice(0, numToWipe);
+
+          toWipe.forEach(icon => {
+            icon.classList.add('wiped');
+            
+            
+            const targetWindowId = `window-${icon.getAttribute('data-window')}`;
+            const targetWin = document.getElementById(targetWindowId);
+            if (targetWin && targetWin.classList.contains('active-window')) {
+              targetWin.classList.remove('active-window', 'active-window-glow');
+              targetWin.classList.add('inactive-window');
+              targetWin.style.opacity = '0';
+              targetWin.style.transform = 'scale(0.96)';
+              setTimeout(() => {
+                targetWin.style.pointerEvents = 'none';
+              }, 200);
+            }
+          });
+        }
+
+        restoreBtn.style.display = 'inline-block';
+      }
+
+      flipBtn.disabled = false;
+    }, 600);
+  });
+
+  restoreBtn.addEventListener('click', () => {
+    const wipedIcons = document.querySelectorAll('.desktop-icon.wiped');
+    wipedIcons.forEach(icon => {
+      icon.classList.remove('wiped');
+    });
