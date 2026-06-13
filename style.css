@@ -1262,3 +1262,48 @@ body {
   border-color: var(--accent-purple);
 }
 
+
+.asciicam-screen {
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+
+.asciicam-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.ascii-placeholder-icon {
+  font-size: 3.5rem;
+  opacity: 0.4;
+  animation: pulse-cam 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-cam {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.1); opacity: 0.65; }
+}
+
+.asciicam-placeholder p {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.asciicam-placeholder strong {
+  color: #22d3ee;
+}
+
+.ascii-sub {
+  font-size: 0.75rem;
+  color: rgba(170, 156, 186, 0.6);
+}

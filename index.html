@@ -327,3 +327,14 @@
           <span class="window-dot dot-max" data-max="asciicam"></span>
         </div>
         <span class="window-title">📷 ASCII Cam</span>
+        <div class="window-spacer"></div>
+      </div>
+      <div class="window-content asciicam-app">
+        <video id="ascii-video" autoplay playsinline muted style="display:none;"></video>
+        <canvas id="ascii-canvas" style="display:none;"></canvas>
+
+        <div class="asciicam-toolbar">
+          <button id="ascii-start-btn" class="ascii-ctrl-btn ascii-start">📷 Start Camera</button>
+          <button id="ascii-stop-btn" class="ascii-ctrl-btn ascii-stop" style="display:none;">⏹ Stop</button>
+          <button id="ascii-snap-btn" class="ascii-ctrl-btn ascii-snap" style="display:none;">💾 Snapshot</button>
+          <div class="ascii-mode-group">

@@ -860,3 +860,46 @@ function initRouletteApp() {
     wipedIcons.forEach(icon => {
       icon.classList.remove('wiped');
     });
+    restoreBtn.style.display = 'none';
+    resultDiv.textContent = 'All apps restored!';
+    resultDiv.className = 'roulette-result win-text';
+    coin.className = 'roulette-coin';
+    coin.textContent = '?';
+  });
+}
+
+
+function initASCIICamApp() {
+  const video = document.getElementById('ascii-video');
+  const canvas = document.getElementById('ascii-canvas');
+  const output = document.getElementById('ascii-output');
+  const placeholder = document.getElementById('asciicam-placeholder');
+  const startBtn = document.getElementById('ascii-start-btn');
+  const stopBtn = document.getElementById('ascii-stop-btn');
+  const snapBtn = document.getElementById('ascii-snap-btn');
+  const modeSelect = document.getElementById('ascii-mode-select');
+  const resSelect = document.getElementById('ascii-res-select');
+  const fpsEl = document.getElementById('ascii-fps');
+  const charEl = document.getElementById('ascii-char-count');
+  const statusEl = document.getElementById('ascii-status');
+
+  if (!startBtn) return;
+
+  const ctx = canvas.getContext('2d');
+  const CHAR_RAMP = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,"^`\'. ';
+  const RAMP_LEN = CHAR_RAMP.length;
+
+  let stream = null;
+  let rafId = null;
+  let running = false;
+  let lastTime = 0;
+  let fpsCounter = 0;
+  let fpsDisplay = 0;
+
+  const RES = { high: [140, 70], mid: [100, 50], low: [70, 35] };
+
+  function getResolution() {
+    return RES[resSelect.value] || RES.mid;
+  }
+
+  function getMode() {
