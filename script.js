@@ -903,3 +903,46 @@ function initASCIICamApp() {
   }
 
   function getMode() {
+    return modeSelect.value;
+  }
+
+  startBtn.addEventListener('click', async () => {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+      video.srcObject = stream;
+      video.play();
+
+      video.onloadedmetadata = () => {
+        running = true;
+        placeholder.style.display = 'none';
+        output.style.display = 'block';
+
+        startBtn.style.display = 'none';
+        stopBtn.style.display = 'inline-block';
+        snapBtn.style.display = 'inline-block';
+
+        statusEl.textContent = '● LIVE';
+        statusEl.className = 'ascii-status live';
+
+        renderLoop();
+      };
+    } catch (err) {
+      statusEl.textContent = '✖ No Camera';
+      placeholder.querySelector('p').innerHTML = '<strong style="color:#f87171">Camera access denied.</strong><br>Allow camera permission and try again.';
+    }
+  });
+
+  stopBtn.addEventListener('click', stopCamera);
+
+  function stopCamera() {
+    running = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    if (stream) {
+      stream.getTracks().forEach(t => t.stop());
+      stream = null;
+    }
+    video.srcObject = null;
+    output.style.display = 'none';
+    placeholder.style.display = 'flex';
+    startBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';

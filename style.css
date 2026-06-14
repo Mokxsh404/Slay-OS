@@ -1307,3 +1307,49 @@ body {
   font-size: 0.75rem;
   color: rgba(170, 156, 186, 0.6);
 }
+
+
+.ascii-output {
+  font-family: 'Courier New', 'Fira Code', monospace;
+  font-size: 6px;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  white-space: pre;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 6px 8px;
+  margin: 0;
+  background: transparent;
+  
+  color: #22c55e;
+  text-shadow: 0 0 4px rgba(34, 197, 94, 0.45);
+  user-select: text;
+}
+
+
+.ascii-output.mode-green  { color: #22c55e; text-shadow: 0 0 4px rgba(34, 197, 94, 0.45); }
+.ascii-output.mode-pink   { color: #f472b6; text-shadow: 0 0 4px rgba(244, 114, 182, 0.45); }
+.ascii-output.mode-cyan   { color: #22d3ee; text-shadow: 0 0 4px rgba(34, 211, 238, 0.45); }
+.ascii-output.mode-white  { color: #e2e8f0; text-shadow: none; }
+.ascii-output.mode-color  { color: inherit; text-shadow: none; }
+
+
+.asciicam-footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 6px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(10, 8, 20, 0.8);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.ascii-fps    { color: #22d3ee; }
+.ascii-chars  { color: #a78bfa; }
+.ascii-status { margin-left: auto; font-weight: 600; }
+.ascii-status.live { color: #22c55e; }
+.ascii-status.offline { color: var(--text-muted); }
+
