@@ -946,3 +946,46 @@ function initASCIICamApp() {
     placeholder.style.display = 'flex';
     startBtn.style.display = 'inline-block';
     stopBtn.style.display = 'none';
+    snapBtn.style.display = 'none';
+    statusEl.textContent = 'Offline';
+    statusEl.className = 'ascii-status offline';
+    fpsEl.textContent = 'FPS: --';
+    charEl.textContent = 'Chars: --';
+  }
+
+  snapBtn.addEventListener('click', () => {
+    const text = output.innerText;
+    const lines = text.split('\n');
+    const fontSize = 6;
+    const lineH = 7;
+    const w = (lines[0] || '').length * (fontSize * 0.6);
+    const h = lines.length * lineH;
+
+    const snapCanvas = document.createElement('canvas');
+    snapCanvas.width = w || 800;
+    snapCanvas.height = h || 600;
+    const sctx = snapCanvas.getContext('2d');
+
+    sctx.fillStyle = '#000';
+    sctx.fillRect(0, 0, snapCanvas.width, snapCanvas.height);
+
+    const mode = getMode();
+    const colors = { green: '#22c55e', pink: '#f472b6', cyan: '#22d3ee', white: '#e2e8f0', color: '#22c55e' };
+    sctx.fillStyle = colors[mode] || '#22c55e';
+    sctx.font = `${fontSize}px "Courier New", monospace`;
+
+    lines.forEach((line, i) => {
+      sctx.fillText(line, 0, (i + 1) * lineH);
+    });
+
+    const link = document.createElement('a');
+    link.download = `ascii-snapshot-${Date.now()}.png`;
+    link.href = snapCanvas.toDataURL('image/png');
+    link.click();
+  });
+
+  function renderLoop(timestamp = 0) {
+    if (!running) return;
+    rafId = requestAnimationFrame(renderLoop);
+
+    if (timestamp - lastTime < 42) return;
