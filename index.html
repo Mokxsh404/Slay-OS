@@ -360,3 +360,24 @@
         <div class="asciicam-screen" id="asciicam-screen">
           <div class="asciicam-placeholder" id="asciicam-placeholder">
             <div class="ascii-placeholder-icon">📷</div>
+            <p>Click <strong>Start Camera</strong> to begin</p>
+            <p class="ascii-sub">Your feed will appear as ASCII text art</p>
+          </div>
+          <pre id="ascii-output" class="ascii-output" style="display:none;"></pre>
+        </div>
+
+        <div class="asciicam-footer">
+          <span class="ascii-fps" id="ascii-fps">FPS: --</span>
+          <span class="ascii-chars" id="ascii-char-count">Chars: --</span>
+          <span class="ascii-status" id="ascii-status">Offline</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <audio id="sound-click" src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAD///8A"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

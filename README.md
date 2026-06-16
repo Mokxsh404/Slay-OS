@@ -54,3 +54,5 @@ used AI here and there for some parts of the UI — mostly for inspiration and b
 ## about
 
 made for the **Hack Club Stardance** challenge. the assignment was to build something creative. i built an operating system instead of sleeping. totally worth it 💜
+
+---

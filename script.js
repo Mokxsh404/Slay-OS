@@ -989,3 +989,46 @@ function initASCIICamApp() {
     rafId = requestAnimationFrame(renderLoop);
 
     if (timestamp - lastTime < 42) return;
+
+    const delta = timestamp - lastTime;
+    lastTime = timestamp;
+    fpsCounter++;
+    if (fpsCounter % 10 === 0) {
+      fpsDisplay = Math.round(1000 / delta);
+      fpsEl.textContent = `FPS: ${fpsDisplay}`;
+    }
+
+    const [cols, rows] = getResolution();
+    const mode = getMode();
+
+    canvas.width = cols;
+    canvas.height = rows;
+    ctx.drawImage(video, 0, 0, cols, rows);
+
+    let imageData;
+    try {
+      imageData = ctx.getImageData(0, 0, cols, rows);
+    } catch (e) {
+      return;
+    }
+
+    const data = imageData.data;
+    const totalChars = cols * rows;
+
+    if (mode === 'color') {
+      const lines = [];
+      for (let row = 0; row < rows; row++) {
+        let line = '';
+        for (let col = 0; col < cols; col++) {
+          const idx = (row * cols + col) * 4;
+          const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+          const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          const mirrorCol = cols - 1 - col;
+          const mirrorIdx = (row * cols + mirrorCol) * 4;
+          const mr = data[mirrorIdx], mg = data[mirrorIdx + 1], mb = data[mirrorIdx + 2];
+          const charIndex = Math.floor((1 - brightness) * (RAMP_LEN - 1));
+          const ch = CHAR_RAMP[charIndex] === ' ' ? '\u00A0' : CHAR_RAMP[charIndex];
+          line += `<span style="color:rgb(${mr},${mg},${mb})">${ch}</span>`;
+        }
+        lines.push(line);
+      }
