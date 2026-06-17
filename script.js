@@ -1032,3 +1032,46 @@ function initASCIICamApp() {
         }
         lines.push(line);
       }
+      output.innerHTML = lines.join('\n');
+      output.className = 'ascii-output mode-color';
+
+    } else {
+      const charArr = [];
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const mirrorCol = cols - 1 - col;
+          const idx = (row * cols + mirrorCol) * 4;
+          const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+          const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          const charIndex = Math.floor((1 - brightness) * (RAMP_LEN - 1));
+          charArr.push(CHAR_RAMP[charIndex]);
+        }
+        charArr.push('\n');
+      }
+      output.textContent = charArr.join('');
+      output.className = `ascii-output mode-${mode}`;
+    }
+
+    charEl.textContent = `Chars: ${totalChars.toLocaleString()}`;
+  }
+
+  const closeBtn = document.getElementById('asciicam-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (running) stopCamera();
+    });
+  }
+}
+
+
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag)
+  );
+}
